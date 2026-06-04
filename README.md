@@ -43,12 +43,16 @@ mvp-puc-rio-ml-analytics/
 
 ## Modelos Avaliados
 
-| Modelo | Tipo |
-|---|---|
-| DummyClassifier (most_frequent) | Baseline |
-| Regressão Logística | Candidato |
-| Random Forest | Candidato |
-| Gradient Boosting | Candidato |
+| Modelo | Tipo | F1-weighted | ROC-AUC |
+|---|---|---|---|
+| DummyClassifier | Baseline | 0.6306 | — |
+| Regressão Logística | Candidato linear | 0.8291 | 0.8795 |
+| Decision Tree | Candidato interpretável | 0.8585 | 0.8310 |
+| Random Forest | Candidato ensemble-bagging | 0.8578 | 0.8882 |
+| XGBoost | Candidato ensemble-boosting | 0.8497 | 0.8978 |
+| **XGBoost (otimizado)** | **Melhor modelo** | **0.8653** | **0.8824** |
+
+O XGBoost otimizado via `RandomizedSearchCV` (n_iter=10, cv=3) supera o baseline em **23,5 pontos percentuais** de F1-weighted. O F1 da classe minoritária (`Preso`) é 0.71 (precision=0.88, recall=0.59).
 
 ---
 
